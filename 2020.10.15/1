@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+float temp (long x, long n) {
+  if (n==0) {
+    return 1;
+  } 
+  if (n<0) {
+    return 1/(temp (x, abs(n)));
+  }
+  if (n>0) {
+    if (abs(n)%2==1) {
+      return temp (x, abs(n)-1)*x;
+    }
+    else {
+      long k=temp (x, abs(n)/2);
+        return k*k;
+    } 
+  }
+}
+int main() {
+  long x, n;
+  cin >> x >> n;
+  long k;
+  cout << temp (x, n);
+  return 0;
+}
