@@ -1,0 +1,71 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+void Predmet(float P[n], float V[n], float PV[n]) {
+    int x, y, z; 
+    for (x = 0; x < n; x++) {
+       P[x] = rand() % 8 + 1; 
+       V[x] = rand() % 8 + 1; 
+       PV[x] = P[x] / V[x];
+    }
+}
+void Vivod(float *P, float *V, float *PV, int N) {
+    int x;
+    cout << endl << "Цена\t" << "Вес\t" << "Уд. цен." << endl;
+    for (x = 0; x < N; x++) {
+       cout << P[x] << "\t" << V[x] << "\t" << PV[x] << endl;
+   }
+}
+void Greedy(float P[n], float V[n], float PV[n], int N, float Emk) {
+      int x, y, k = 0; // k - кол-во предметов
+      float buf1, buf2, buf3, SumV = 0, SumP = 0;
+      for (x = 0; x < N - 1; x++) {
+        for (y = x + 1; y < N; y++) {
+           if (PV[x] < PV[y] || PV[x] == PV[y] && V[x] < V[y]) {
+              buf1 = P[x];
+              P[x] = P[y];
+              P[y] = buf1;
+
+              buf2 = V[x];
+              V[x] = V[y];
+              V[y] = buf2;
+
+              buf3 = PV[x];
+              PV[x] = PV[y];
+              PV[y] = buf3;
+           }
+        }
+      }
+}
+cout << "Отсортированный список предметов:";
+Vivod(P, V, PV, N);
+for (x = 0; x < N; x++) {
+    if (SumV + V[x] <= Emk) {
+        SumV += V[x];
+        SumP += P[x];
+        k++;
+    }
+    else break;
+}
+for (y = 0; y < N; y++) {
+    if (SumV + V[y] <= Emk) {
+        SumV += V[y];
+        SumP += P[y];
+        k++;
+    }
+    else break;
+}
+cout << "Ответ:";
+Vivod(P, V, PV, k);
+cout << "Кол-во предметов: " << k << endl << "Общий вес предметов: " << SumV << endl << "Общая ценность " << SumP;
+}
+
+int main() {
+   int n;
+   cin >> n;
+   float Ves[n], Price[n], UdPr[n]; 
+   Predmet(Price, Ves, UdPr);
+   cout << "Список предметов:";
+   Vivod(Price, Ves, UdPr, n);
+   Greedy(Price, Ves, UdPr, n, h);
+}
