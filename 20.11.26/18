@@ -1,0 +1,29 @@
+#include <iostream>
+#include <algorithm>
+#include <math.h>
+using namespace std;
+int main(int argc, char* argv[]) {
+    int n,k,c,sqrt_1,sqrt_2,d;
+    cin>>n;
+    c=sqrt(n);
+    if ((c*c)%n == 0) {
+       cout<<n;
+       cout<<sqrt(n);
+    }
+    else {
+        do {
+           n--;
+        }
+        while((c*c)%n != 0);
+        sqrt_1=n-1;
+        d=sqrt(sqrt_1);
+ 
+ 
+        do {
+           sqrt_1--;
+        }
+        while((d*d)%sqrt_1 != 0);
+        sqrt_2=sqrt_1;
+    }
+return 0;
+}
