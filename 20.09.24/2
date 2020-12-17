@@ -14,8 +14,8 @@ void Sort(int *m, int n) {
 int main () {
     int n;
     cin >> n;
-    int *m = new int[n];
-    for(int *q = m; q!=m+n; q++) {
+    int *m=new int[n];
+    for(int *q=m; q!=m+n; q++) {
         cin >> *q;
     }
     Sort(m, n);
