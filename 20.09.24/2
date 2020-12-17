@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+void SortMass(int *m, int n) {
+    for(int *q=m+n-1; q>=m; q--)
+        for(int *p=m; p<q; p++) {
+                if(*p>*(p+1)) {
+                       int k=*p;
+                       *p=*(p+1);
+                       *(p+1)=k;
+                }
+        }  
+}
+ int main () {
+    int n = 0;
+    cin >> n;
+    int *m = new int[n];
+    for(int *q = m; q!=m+n; q++) {
+        cin >> *q;
+    }
+    SortMass(m, n);
+    for(int *q=m; q!=m+n; q++) {
+        cout << *q << ' ';
+    }
+}
