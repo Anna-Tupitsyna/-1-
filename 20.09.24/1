@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+int gcd (int a, int b) {
+    if (b==0) return a;
+    return gcd (b, a%b);
+}
+struct Rational {
+    int m;
+    unsigned int n;
+    Rational (int x, int y) {
+        m=x/gcd(x, y);
+        n=y/gcd(x, y);
+    }
+    Rational operator*=(Rational K) {
+        m*=K.m;
+        n*=K.n;
+        m=m/gcd(m, n);
+        n=n/gcd(m, n);
+        return Rational(m, n);
+    }
+    Rational &operator*=(int K) {
+        m*=K;
+        m=m/gcd(m ,n);
+        n=n/gcd(m, n);
+        return Rational(m, n);
+    }
+};
+
+int main () {
+    int m, a, N;
+    unsigned int n, b;
+    cin >> m;
+    cin >> a;
+    cin >> n;
+    cin >> b;
+    Rational K(m, n);
+    Rational L(m, n);
+    Rational P(a, b);
+    K.operator*=(P);
+    cout << K.m << "/" << K.n;
+    cin >> N;
+    L.operator*=(N);
+    cout << L.m << "/" << L.n;
+    system("PAUSE");
+    return 0;
+}
