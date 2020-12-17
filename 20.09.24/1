@@ -7,7 +7,7 @@ int gcd (int a, int b) {
 struct Rational {
     int m;
     unsigned int n;
-    Rational (int x, int y) {
+    Rational(int x, int y) {
         m=x/gcd(x, y);
         n=y/gcd(x, y);
     }
