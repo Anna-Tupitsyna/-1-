@@ -12,8 +12,8 @@ long double temp(long n, long k) {
   }
 }
 int main() {
-long n, k;
-cin » n » k;
-cout « temp(n, k);
-return 0;
+   long n, k;
+   cin » n » k;
+   cout « temp(n, k);
+   return 0;
 }
